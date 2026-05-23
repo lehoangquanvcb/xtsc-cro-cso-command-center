@@ -1,9 +1,7 @@
-initiative,owner,progress_pct,expected_progress_pct,execution_risk,target_date
-Risk appetite framework,CRO Office,65,75,High,2026-06-30
-Margin limit system,Risk + IT,55,60,Medium,2026-07-31
-SSC/HOSE/HNX reporting calendar,Compliance,80,80,Low,2026-06-15
-Retail brokerage growth roadmap,Business,62,70,Medium,2026-09-30
-Proprietary trading policy,Investment,45,65,High,2026-08-31
-Risk dashboard automation,Risk + Data,70,65,Low,2026-07-15
-Three-lines-of-defense model,CRO Office,50,60,Medium,2026-10-31
-IB pipeline governance,IB,40,55,Medium,2026-09-15
+initiative,owner,category,progress_pct,expected_progress_pct,execution_risk,deadline,blocker,recommended_action
+Xây dựng khung Risk Appetite & Limit System,CRO,Risk Governance,45,70,High,2026-06-30,Cần phê duyệt HĐQT và phân tầng hạn mức theo nghiệp vụ,Escalate to CEO/Board
+Triển khai Dashboard Margin Risk hằng ngày,Risk + IT,Risk Technology,62,65,Medium,2026-06-15,Cần chuẩn hóa dữ liệu từ core chứng khoán,Monitor closely
+Thiết lập quy trình báo cáo UBCK/HOSE/HNX,Compliance,Regulatory,75,75,Low,2026-05-31,Đang chuẩn hóa checklist báo cáo định kỳ,On track
+Mở rộng kinh doanh margin có kiểm soát,Brokerage,Growth,58,80,High,2026-07-31,Tăng trưởng margin cần gắn với haircut và liquidity score,Reprioritize
+Xây dựng năng lực IB/Corporate Finance,IB,Strategy,35,55,Medium,2026-09-30,"Pipeline còn mỏng, cần liên kết hệ sinh thái Xuân Thiện",Add resources
+Thiết lập Ủy ban Rủi ro & Chiến lược hằng tháng,CEO Office,Governance,50,60,Medium,2026-06-20,Cần quy chế họp và mẫu board pack thống nhất,Escalate if delayed

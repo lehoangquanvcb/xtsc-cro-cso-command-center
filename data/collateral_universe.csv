@@ -1,0 +1,11 @@
+ticker,sector,collateral_value,haircut_pct,price,liquidity_risk
+VHM,Bất động sản,850000000000,18,55000,High
+VIC,Bất động sản,760000000000,16,47000,High
+VRE,Bất động sản,420000000000,11,26000,Medium
+HPG,Thép,650000000000,14,29500,Medium
+SSI,Chứng khoán,580000000000,13,35000,Medium
+VND,Chứng khoán,510000000000,12,21500,High
+SHS,Chứng khoán,330000000000,9,18200,High
+MBB,Ngân hàng,460000000000,10,25000,Low
+TCB,Ngân hàng,390000000000,9,31000,Low
+FPT,Công nghệ,280000000000,7,120000,Low

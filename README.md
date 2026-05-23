@@ -1,45 +1,33 @@
-# XTSC Risk & Strategy Command Center
+# XTSC CRO/CSO Enterprise Governance Platform
 
-Prototype Streamlit app for a CRO + CSO role at a securities company in build-up stage.
+**Author: Le Hoang Quan**
 
-## Purpose
+Prototype Streamlit cho vai trò **Giám đốc Quản trị Rủi ro kiêm Chiến lược** tại Công ty Chứng khoán Xuân Thiện.
 
-This system demonstrates how a Chief Risk Officer / Chief Strategy Officer can build an integrated command center covering:
+## Điểm mới v3
 
-- Enterprise risk governance
-- Risk appetite and control limits
-- Margin and trading risk monitoring
-- Liquidity and market risk early warning
-- Compliance and regulator reporting
-- Strategic execution governance
-- CEO / Board-level reporting
+- Việt hoá giao diện và báo cáo điều hành.
+- Hiển thị `Author: Le Hoang Quan` trên đầu dashboard.
+- Connector `vnstock` để lấy VNINDEX tự động, có fallback sang dữ liệu mẫu nếu lỗi môi trường.
+- Module **Risk Appetite Framework**: hạn mức, ngưỡng sử dụng, trạng thái xanh/vàng/đỏ.
+- Module **Margin Stress Test**: shock thị trường chung, shock nhóm bất động sản, penalty thanh khoản thấp, forced-sell, collateral shortfall.
+- Module **CSO Strategic Execution Tracker**: sáng kiến chiến lược, owner, tiến độ, blocker, action.
+- Module **Board Pack Generator**: tóm tắt điều hành, top risk alerts, risk appetite, stress test, execution status và khuyến nghị.
+- Rule-based recommendation engine, có thể nâng cấp lên LLM/AI assistant.
 
-## Quick start
+## Chạy local
 
 ```bash
 pip install -r requirements.txt
 streamlit run app.py
 ```
 
-## Deploy to Streamlit Cloud
+## Deploy Streamlit Cloud
 
-1. Create a GitHub repository.
-2. Upload all files in this package.
-3. Go to Streamlit Cloud.
-4. Select the repository and set main file as `app.py`.
-5. Deploy.
+- Repository: `xtsc-cro-cso-command-center`
+- Branch: `main`
+- Main file path: `app.py`
 
-## Suggested Git commands
+## Ghi chú dữ liệu
 
-```bash
-git init
-git add .
-git commit -m "Initial XTSC CRO CSO command center"
-git branch -M main
-git remote add origin https://github.com/<your-username>/xtsc-cro-cso-command-center.git
-git push -u origin main
-```
-
-## Notes
-
-All datasets are synthetic and for interview/demo purposes only. Replace them with internal XTSC data when available.
+Dữ liệu margin, khẩu vị rủi ro, compliance và sáng kiến chiến lược hiện là dữ liệu mẫu để demo phỏng vấn. VNINDEX có thể lấy live qua `vnstock`; khi Streamlit Cloud lỗi thư viện/API, app tự fallback về dữ liệu mẫu để không bị crash.

@@ -1,0 +1,9 @@
+risk_metric,unit,approved_limit,current_value,direction,description
+Margin Outstanding / Equity,x,2.0,1.45,Lower is better,Tổng dư nợ margin trên vốn chủ sở hữu
+Margin Utilization,%,85.0,78.5,Lower is better,Mức sử dụng hạn mức margin được HĐQT phê duyệt
+Top 10 Client Exposure,%,25.0,22.0,Lower is better,Tỷ trọng dư nợ top 10 khách hàng trên tổng dư nợ
+Single Stock Collateral,%,15.0,13.5,Lower is better,Tập trung tài sản bảo đảm vào một mã cổ phiếu
+Real Estate Sector Exposure,%,30.0,28.0,Lower is better,Tỷ trọng dư nợ/collateral liên quan nhóm bất động sản
+Liquidity Buffer,x,1.3,1.75,Higher is better,Đệm thanh khoản so với nghĩa vụ thanh toán ngắn hạn
+Compliance Breaches,count,0.0,2.0,Lower is better,Số ngoại lệ/vi phạm tuân thủ còn mở
+Regulatory Reporting On-time,%,100.0,96.0,Higher is better,Tỷ lệ báo cáo gửi đúng hạn cho UBCK/HOSE/HNX
