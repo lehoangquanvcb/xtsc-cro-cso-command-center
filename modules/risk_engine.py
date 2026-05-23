@@ -95,7 +95,11 @@ def force_sell_simulation(margin_df, market_shock_pct=-10, real_estate_shock_pct
     if real_estate_shock_pct is None:
         real_estate_shock_pct = market_shock_pct
     sector_shock = np.where(df["sector"].str.contains("Real Estate|Bất động", case=False, na=False), real_estate_shock_pct, market_shock_pct)
-    liquidity_penalty = np.where(df.get("liquidity_risk", "Medium").astype(str).str.lower().eq("high"), low_liquidity_extra_haircut_pct, 0)
+    if "liquidity_risk" in df.columns:
+        liquidity_risk = df["liquidity_risk"].fillna("Medium").astype(str).str.lower()
+    else:
+        liquidity_risk = pd.Series("medium", index=df.index)
+    liquidity_penalty = np.where(liquidity_risk.eq("high"), low_liquidity_extra_haircut_pct, 0)
     df["effective_shock_pct"] = sector_shock - liquidity_penalty
     df["stressed_collateral_value"] = df["collateral_value"] * (1 + df["effective_shock_pct"] / 100)
     df["stressed_ltv_pct"] = df["loan_balance"] / df["stressed_collateral_value"] * 100
