@@ -80,12 +80,13 @@ recommendations = rule_based_recommendations(latest, risk_appetite, stressed, in
 st.markdown("**Author: Le Hoang Quan**")
 st.title("XTSC CRO/CSO Enterprise Governance Platform")
 st.caption("Trung tâm điều hành Quản trị rủi ro, Tuân thủ, Chiến lược, Stress Test và Báo cáo Ban lãnh đạo/HĐQT")
-st.info("📌 Lưu ý: Dashboard này có 7 tab chức năng. Anh/chị vui lòng click lần lượt vào các tab được đánh số từ 1 đến 7 bên dưới để xem đầy đủ các module")
 
 if "vnstock live" in D["data_source"]:
     st.success(f"Nguồn dữ liệu thị trường: {D['data_source']}. {D['data_note']}")
 else:
     st.warning(f"Nguồn dữ liệu thị trường: {D['data_source']}. {D['data_note']}")
+
+st.info("📌 Lưu ý: Dashboard này có 7 tab chức năng. Anh/chị vui lòng click lần lượt vào các tab được đánh số từ 1 đến 7 bên dưới để xem đầy đủ các module")
 
 if mobile:
     st.info("Đang bật giao diện mobile friendly: bảng và biểu đồ được giữ gọn để demo trên điện thoại.")
