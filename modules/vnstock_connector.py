@@ -16,6 +16,24 @@ from typing import Tuple, List
 import pandas as pd
 
 
+def _to_datetime_ns(series) -> pd.Series:
+    """Convert any datetime-like series/index to timezone-naive datetime64[ns].
+
+    This avoids Streamlit Cloud merge_asof errors such as:
+    incompatible merge keys dtype('<M8[us]') and dtype('<M8[ns]').
+    """
+    s = pd.to_datetime(series, errors="coerce")
+    try:
+        if getattr(s.dt, "tz", None) is not None:
+            s = s.dt.tz_convert(None)
+    except Exception:
+        try:
+            s = s.dt.tz_localize(None)
+        except Exception:
+            pass
+    return s.astype("datetime64[ns]")
+
+
 def _standardize_ohlcv(df: pd.DataFrame) -> pd.DataFrame:
     """Return columns date, close from multiple market-data schemas."""
     if df is None or len(df) == 0:
@@ -26,12 +44,12 @@ def _standardize_ohlcv(df: pd.DataFrame) -> pd.DataFrame:
     # Common date/time column names across vnstock/yfinance versions/providers
     for c in ["time", "date", "trading_date", "datetime", "timestamp"]:
         if c in df.columns:
-            df["date"] = pd.to_datetime(df[c], errors="coerce")
+            df["date"] = _to_datetime_ns(df[c])
             break
     if "date" not in df.columns:
         # yfinance may return DatetimeIndex
         if isinstance(df.index, pd.DatetimeIndex):
-            df["date"] = pd.to_datetime(df.index, errors="coerce")
+            df["date"] = _to_datetime_ns(df.index)
         else:
             df["date"] = pd.date_range(end=pd.Timestamp.today().normalize(), periods=len(df), freq="B")
 
@@ -157,11 +175,14 @@ def enrich_macro_with_vnstock(local_macro: pd.DataFrame, use_live: bool = True, 
     try:
         live, label = get_vnindex_history(months=18, source=source)
         macro = local_macro.copy()
-        macro["date"] = pd.to_datetime(macro["date"])
-        live["date"] = pd.to_datetime(live["date"])
+        macro["date"] = _to_datetime_ns(macro["date"])
+        live = live.copy()
+        live["date"] = _to_datetime_ns(live["date"])
+        macro = macro.dropna(subset=["date"]).sort_values("date").reset_index(drop=True)
+        live = live.dropna(subset=["date"]).sort_values("date").reset_index(drop=True)
         merged = pd.merge_asof(
-            macro.sort_values("date"),
-            live.sort_values("date"),
+            macro,
+            live,
             on="date",
             direction="nearest",
             tolerance=pd.Timedelta(days=10),

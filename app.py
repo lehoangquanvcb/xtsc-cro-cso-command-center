@@ -103,10 +103,7 @@ with tabs[0]:
 
     st.markdown("### Cảnh báo trọng yếu")
     for a in alerts:
-        if risk_status != "Green":
-    		st.warning(a)
-	else:
-    		st.success(a)
+        st.warning(a) if risk_status != "Green" else st.success(a)
 
     st.markdown("### Khuyến nghị tự động cho CEO/CRO")
     for rec in recommendations[:5]:
