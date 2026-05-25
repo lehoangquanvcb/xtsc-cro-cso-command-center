@@ -1,0 +1,14 @@
+
+# Integration Guide
+
+Copy these functions into your existing Streamlit project:
+
+from modules.advanced_risk_engine import (
+    dynamic_haircut,
+    trading_book_var,
+    stress_loss,
+    build_competitor_snapshot,
+)
+
+Example:
+competitors = build_competitor_snapshot()
