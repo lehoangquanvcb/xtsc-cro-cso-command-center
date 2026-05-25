@@ -90,13 +90,13 @@ if mobile:
     st.info("Đang bật giao diện mobile friendly: bảng và biểu đồ được giữ gọn để demo trên điện thoại.")
 
 tabs = st.tabs([
-    "1. Buồng lái CEO/HĐQT",
-    "2. Risk Appetite",
+    "1. Tổng quan",
+    "2. Khẩu vị rủi ro",
     "3. Margin Stress Test",
     "4. CSO Execution Tracker",
     "5. Tuân thủ & Regulator",
     "6. Vĩ mô & Thị trường",
-    "7. Board Pack Generator",
+    "7. Trình HĐQT",
 ])
 
 with tabs[0]:
@@ -205,6 +205,12 @@ with tabs[5]:
     fig = px.line(macro, x='date', y=['policy_rate_pct','bond_yield_10y_pct'], title='Lãi suất chính sách và lợi suất TPCP 10 năm proxy')
     st.plotly_chart(fig, use_container_width=True)
 
+    st.subheader("Competitor Intelligence")
+    
+    competitors = build_competitor_snapshot()
+    
+    st.dataframe(competitors, use_container_width=True)
+    
 with tabs[6]:
     st.subheader("Board Pack Generator - Báo cáo CRO/CSO tự động")
     narrative = board_narrative(risk_status, alerts, initiatives, risk_appetite, stress)
