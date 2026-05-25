@@ -14,6 +14,12 @@ from modules.risk_engine import (
 )
 from modules.strategy_engine import summarize_initiatives, board_narrative
 from modules.vnstock_connector import enrich_macro_with_vnstock
+from modules.advanced_risk_engine import (
+    dynamic_haircut,
+    trading_book_var,
+    stress_loss,
+    build_competitor_snapshot,
+)
 
 st.set_page_config(page_title="XTSC CRO/CSO Enterprise Governance Platform", layout="wide")
 
