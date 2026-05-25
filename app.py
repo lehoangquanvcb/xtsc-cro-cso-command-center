@@ -1,1 +1,1 @@
-PLACEHOLDER - use content from chat for app.py
+print('Replace with full app.py content from chat')
