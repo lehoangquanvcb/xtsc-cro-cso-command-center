@@ -157,9 +157,15 @@ def enrich_macro_with_vnstock(local_macro: pd.DataFrame, use_live: bool = True, 
     try:
         live, label = get_vnindex_history(months=18, source=source)
         macro = local_macro.copy()
-        macro["date"] = pd.to_datetime(macro["date"])
-        live["date"] = pd.to_datetime(live["date"])
-        merged = pd.merge_asof(
+        macro["date"] = pd.to_datetime(
+    	    macro["date"]
+	).astype("datetime64[ns]")
+
+	live["date"] = pd.to_datetime(
+    	    live["date"]
+	).astype("datetime64[ns]")
+        
+	merged = pd.merge_asof(
             macro.sort_values("date"),
             live.sort_values("date"),
             on="date",
